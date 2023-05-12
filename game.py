@@ -1,5 +1,3 @@
-#video I got the idea from
-#https://youtu.be/BAxclQzYDKE
 import random
 
 class RockPaperScissors:
@@ -7,6 +5,7 @@ class RockPaperScissors:
         self.computer_choice = ""
         self.user_points = 0
         self.computer_points = 0
+        self.result_message = ""
 
     def play(self, user_choice):
         self.computer_choice = random.choice(["rock", "paper", "scissors"])
@@ -23,6 +22,13 @@ class RockPaperScissors:
             self.computer_points += 1
 
         if self.user_points == 5 or self.computer_points == 5:
-            result += "Game over!"
+            result += " Game over!"
+
+        self.result_message = result  # Store the result message
 
         return result, self.user_points, self.computer_points
+
+    def reset_points(self):
+        self.user_points = 0
+        self.computer_points = 0
+        self.result_message = ""  # Reset the result message

@@ -24,6 +24,9 @@ class Game(tk.Frame):
         self.play_button = tk.Button(self, text="Play", command=self.play_game)
         self.play_button.pack()
 
+        self.reset_button = tk.Button(self, text="Reset", command=self.reset_game)
+        self.reset_button.pack()
+
         self.pack()
 
     def play_game(self):
@@ -31,6 +34,11 @@ class Game(tk.Frame):
         result = self.game.play(user_choice)
         self.computer_choice_label.config(text=f"Computer's choice: {self.game.computer_choice}")
         self.result_label.config(text=f"Result: {result}")
+
+    def reset_game(self):
+        self.game.reset_points()
+        self.computer_choice_label.config(text="Computer's choice: ")
+        self.result_label.config(text="Result: ")
 
 if __name__ == "__main__":
     root = tk.Tk()
